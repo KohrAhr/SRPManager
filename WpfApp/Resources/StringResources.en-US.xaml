@@ -1,0 +1,95 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:SRPManagerV2">
+
+    <system:String x:Key="resVersion">SRP Manager [07/FEB/2019]</system:String>
+    <system:String x:Key="resWelcome">Welcome!</system:String>
+
+    <system:String x:Key="resAdminModeDetected">Administrative mode detected</system:String>
+    <system:String x:Key="resUserModeDetected">User mode detected</system:String>
+    <system:String x:Key="resEnableAWL">Enable AWL</system:String>
+    <system:String x:Key="resAwlEnabled">AWL Enabled</system:String>
+    <system:String x:Key="resAwlDisabled">AWL is Disabled</system:String>
+    <system:String x:Key="resDisableAwl">Disable AWL</system:String>
+    <system:String x:Key="resEnforceWhileRun">Enforce Current Mode while running</system:String>
+    <system:String x:Key="resAwlOnAdminInProgress">AWL applies to Administrators</system:String>
+    <system:String x:Key="resDllEnabled">DLL Processing Enabled</system:String>
+    <system:String x:Key="resCertEnabled">Certificate Rules Enabled</system:String>
+    <system:String x:Key="resShowAwl">Show AWL Rules</system:String>
+    <system:String x:Key="resShowLog">Show Policy Log ...</system:String>
+    <system:String x:Key="resRunGPupgate">Execute "GPUpdate /force"</system:String>
+    <system:String x:Key="resSetLanguage">Set Language</system:String>
+    <system:String x:Key="resAbout">About &amp; EULA</system:String>
+    <system:String x:Key="resExit">Exit Program</system:String>
+
+    <system:String x:Key="resAuthor">Author</system:String>
+    <system:String x:Key="resAuthorName">Andrejs Z. [ZAM@1CLICK.LV] [+371 29 47 91 90] http://github.com/KohrAhr</system:String>
+    <system:String x:Key="resAuthorNameOrigin">¯\_(ツ)_/¯ originally by Toms Pēcis</system:String>
+    <system:String x:Key="resLabelVersion">Version</system:String>
+    <system:String x:Key="resUsername">Username</system:String>
+    <system:String x:Key="resAboutTile">What is AWL?</system:String>
+    <system:String x:Key="resAWLMeaning" xml:space="preserve">AWL is Application White List.
+&#13;&#10;
+It protects Your computer from unwanted programs and viruses.&#13;&#10;
+Folders like Program Files and Windows are included in the AWL by default. That means that You can run any programs that are within these folders. In other words, these are exclusions.&#13;&#10;
+Executable files are files with extensions like .bat, .exe, .ps, .cmd, .reg, etc. Working with documents, watching movies, listening music, etc is not affected by AWL.&#13;&#10;
+Attempt to execute files from other folders will be blocked.&#13;&#10;
+It is possible that administrator has included other exclusions already, for example C:\MyProgam, but if additional exclusions are necessary, they can be added only by the administrator.</system:String>
+
+    <system:String x:Key="resGPUPdateDone">GpUpdate completed!</system:String>
+    <system:String x:Key="resGPUPdateStart">GpUpdate started</system:String>
+    <system:String x:Key="resGPUPdateFail">GpUpdate failed to run</system:String>
+
+    <system:String x:Key="resSrpDisabled">SRP is disabled or doesn't exist</system:String>
+    <system:String x:Key="resSrpInWhiteList">SRP is running in "WhiteList" mode</system:String>
+    <system:String x:Key="resSrpInBlackList">WARNING: SRP is running in "Black List" mode!</system:String>
+    <system:String x:Key="resSrpInBasicUser">WARNING: SRP is running in "Basic User" mode!</system:String>
+
+    <system:String x:Key="resOk">Ok</system:String>
+    <system:String x:Key="resContinue">Continue</system:String>
+    <system:String x:Key="resCancel">Cancel</system:String>
+    <system:String x:Key="resBlocked">An application was blocked</system:String>
+    <system:String x:Key="resOnlyOneInstanceIsAllowed">Application already up and runnung! Only one instance is allowed!</system:String>
+
+    <system:String x:Key="resSummaryValue">AppLock Blocks: {1}. SRP Blocks: {0}.</system:String>
+    <system:String x:Key="resSrpV2SummaryValue">Service status: {0}</system:String>
+    <system:String x:Key="resSrpV2SummaryDetails">DLL: Off. EXE: Off. MSI: Off. Script: Off</system:String>
+    <system:String x:Key="resComputerOnly">(Computer only)</system:String>
+
+    <system:String x:Key="resInformation">Information</system:String>
+
+    <system:String x:Key="resTextForSearch">Text for search</system:String>
+    <system:String x:Key="resTextForHighlight">Text for highlight</system:String>
+    <system:String x:Key="resResetSearch">Reset search</system:String>
+    <system:String x:Key="resRuleSubType">Type</system:String>
+    <system:String x:Key="resRuleType">Rule type</system:String>
+    <system:String x:Key="resValue">Value</system:String>
+    <system:String x:Key="resValueEx">Value addon</system:String>
+    <system:String x:Key="resAwlRules">AWL Rules</system:String>
+    <system:String x:Key="resLastModify">Last modified</system:String>
+    <system:String x:Key="resDescription">Description</system:String>
+    <system:String x:Key="resScope">Scope</system:String>
+
+    <system:String x:Key="resDisallowed">Disallowed</system:String>
+    <system:String x:Key="resUnrestricted">Unrestricted</system:String>
+    <system:String x:Key="resBasic">Basic</system:String>
+
+    <system:String x:Key="resRunning">Running</system:String>
+    <system:String x:Key="resStartPending">Start pending</system:String>
+    <system:String x:Key="resStopPending">Stop pending</system:String>
+    <system:String x:Key="resStopped">Stopped</system:String>
+    <system:String x:Key="resContinuePending">Continue pending</system:String>
+    <system:String x:Key="resPausePending">Pause pending</system:String>
+    <system:String x:Key="resPaused">Paused</system:String>
+
+    <system:String x:Key="resStartService">Start service</system:String>
+    <system:String x:Key="resStopService">Stop service</system:String>
+    <system:String x:Key="resRestartService">Restart service</system:String>
+
+    <system:String x:Key="resEnableNotifications">Enable Notifications</system:String>
+
+    <system:String x:Key="resSrpV2Title">SRPv2 aka AppLocker</system:String>
+    <system:String x:Key="resRuRu">RU (Русский)</system:String>
+    <system:String x:Key="resEnUs">EN (English)</system:String>
+</ResourceDictionary>
