@@ -1,0 +1,93 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tb="http://www.hardcodet.net/taskbar"
+                    xmlns:vm="clr-namespace:SRPManagerV2.ViewModels"
+                    xmlns:local="clr-namespace:SRPManagerV2">
+
+    <!-- The taskbar context menu - the first row is a dummy to show off simple data binding -->
+    <!--
+        The "shared" directive is needed if we reopen the sample window a few times - WPF will otherwise
+        reuse the same context menu (which is a resource) again (which will have its DataContext set to the old TaskbarIcon)
+  -->
+    <ContextMenu x:Shared="false" x:Key="SysTrayMenu">
+        <!--<MenuItem Foreground="Yellow" Style="{StaticResource ResourceKey=miTitle}">
+            <MenuItem.Header>
+                <TextBlock Margin="30,0,0,0" Text="{Binding Path=TotalSummary}"/>
+            </MenuItem.Header>
+        </MenuItem>-->
+
+        <MenuItem IsChecked="True" IsEnabled="False" Visibility="{Binding Path=AdminModeDetectedVisibility}">
+            <MenuItem.Header>
+                <TextBlock Text="{DynamicResource ResourceKey=resAdminModeDetected}"></TextBlock>
+            </MenuItem.Header>
+        </MenuItem>
+        <MenuItem IsEnabled="True" Visibility="{Binding Path=UserModeDetectedVisibility}" Command="{Binding CmdRunAs}">
+            <MenuItem.Header>
+                <TextBlock Text="{DynamicResource ResourceKey=resUserModeDetected}"></TextBlock>
+            </MenuItem.Header>
+        </MenuItem>
+        <Separator />
+
+        <MenuItem Header="{DynamicResource ResourceKey=resEnableAWL}" Command="{Binding CmdEnableAWL}" Visibility="{Binding Path=EnableAWL}" />
+        <MenuItem Header="{DynamicResource ResourceKey=resAwlEnabled}" IsCheckable="True" IsChecked="True" IsEnabled="False" Visibility="{Binding Path=AwlEnabled}" />
+        <MenuItem IsChecked="{Binding Path=DisableSrpInProgress,Mode=TwoWay}" Header="{Binding Path=DisableSrp}" Command="{Binding CmdDisableAWL}" />
+
+        <MenuItem IsCheckable="True" IsChecked="{Binding Path=EnforceWhileRunInProgress,Mode=TwoWay}" Header="{DynamicResource ResourceKey=resEnforceWhileRun}" Visibility="{Binding Path=EnforceWhileRunVisibility}" Command="{Binding CmdEnforceWhileRun}" />
+        <Separator />
+
+        <MenuItem IsEnabled="False" IsChecked="{Binding Path=PolicyScore}" Header="{DynamicResource ResourceKey=resAwlOnAdminInProgress}" />
+        <MenuItem IsEnabled="False" IsChecked="{Binding Path=TransparentEnabled}" Header="{DynamicResource ResourceKey=resDllEnabled}" />
+        <MenuItem IsEnabled="False" IsChecked="{Binding Path=AuthentiCodeEnabled}" Header="{DynamicResource ResourceKey=resCertEnabled}" />
+
+        <Separator />
+
+        <MenuItem Header="{DynamicResource ResourceKey=resShowAwl}" Command="{Binding CmdShowAwl}" />
+        <MenuItem Header="{DynamicResource ResourceKey=resShowLog}" Visibility="{Binding ShowLogVisibility}" Command="{Binding CmdShowLog}" />
+
+        <MenuItem Header="{DynamicResource ResourceKey=resRunGPupgate}" Command="{Binding CmdGPupdate}" />
+
+        <MenuItem Header="SRPv2 aka AppLocker" >
+            <MenuItem Foreground="Yellow" Style="{StaticResource ResourceKey=miTitle}">
+                <MenuItem.Header>
+                    <TextBlock Text="{Binding Path=SrpV2Summary}"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Style="{StaticResource ResourceKey=miTitle}">
+                <MenuItem.Header>
+                    <TextBlock Text="{DynamicResource ResourceKey=resSrpV2SummaryDetails}"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource ResourceKey=resStartService}" Command="{Binding CmdStartSrpV2}" Visibility="{Binding Path=AdminModeDetectedVisibility}"/>
+            <MenuItem Header="{DynamicResource ResourceKey=resStopService}" Command="{Binding CmdStopSrpV2}" Visibility="{Binding Path=AdminModeDetectedVisibility}"/>
+            <MenuItem Header="{DynamicResource ResourceKey=resRestartService}" Command="{Binding CmdRestartSrpV2}" Visibility="{Binding Path=AdminModeDetectedVisibility}"/>
+        </MenuItem>
+
+        <Separator />
+
+        <MenuItem IsCheckable="True" IsChecked="{Binding Path=EnableNotifications}" Header="{DynamicResource ResourceKey=resEnableNotifications}"/>
+
+        <MenuItem Header="{StaticResource ResourceKey=resSetLanguage}" Visibility="{Binding }">
+            <MenuItem Header="{DynamicResource ResourceKey=resEnUs}" Command="{Binding CmdLanguageEN}"/>
+            <MenuItem Header="{DynamicResource ResourceKey=resRuRu}" Command="{Binding CmdLanguageRU}"/>
+        </MenuItem>
+
+        <MenuItem Header="{DynamicResource ResourceKey=resAbout}" Command="{Binding CmdAbout}"/>
+        <MenuItem x:Uid="miExit" Header="{DynamicResource ResourceKey=resExit}" Command="{Binding CmdExit}">
+        </MenuItem>
+    </ContextMenu>
+
+
+    <!-- the application's NotifyIcon - started from App.xaml.cs. Declares its own view model. -->
+    <tb:TaskbarIcon x:Key="NotifyIcon"
+        MenuActivation="LeftOrRightClick"
+        Opacity="0.75"
+        IconSource="/Resources/Bitmaps/init.ico"
+        ContextMenu="{StaticResource SysTrayMenu}">
+        
+        <!-- self-assign a data context (could also be done programmatically) -->
+        <tb:TaskbarIcon.DataContext>
+            <vm:NotifyIconVM />
+        </tb:TaskbarIcon.DataContext>
+    </tb:TaskbarIcon>
+
+</ResourceDictionary>
